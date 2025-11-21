@@ -1,0 +1,97 @@
+================================================================================
+                    MAP TROUBLESHOOTING GUIDE
+================================================================================
+
+If the map is not showing, follow these steps:
+
+1. RESTART DEV SERVER
+   ---------------------
+   - Press Ctrl+C in terminal to stop the server
+   - Run: npm run dev
+   - This ensures .env changes are loaded
+
+2. CHECK BROWSER CONSOLE
+   ---------------------
+   - Press F12 in browser
+   - Go to Console tab
+   - Look for any red errors related to:
+     * Mapbox
+     * WebGL
+     * Token errors
+
+3. COMMON ISSUES & SOLUTIONS
+   -------------------------
+
+   Issue: "Error: A valid Mapbox access token is required"
+   Solution: 
+   - Check .env file has VITE_MAPBOX_TOKEN
+   - Restart dev server
+   - The app has a fallback public token
+
+   Issue: Map container is blank/white
+   Solution:
+   - Check if mapbox-gl.css is loaded (Network tab in DevTools)
+   - Ensure container has height (currently set to 600px)
+   - Check if WebGL is enabled in browser
+
+   Issue: "WebGL not supported"
+   Solution:
+   - Update browser to latest version
+   - Enable hardware acceleration in browser settings
+   - Try different browser (Chrome/Firefox/Edge)
+
+4. VERIFY MAPBOX TOKEN
+   -------------------
+   Current setup:
+   - Fallback token: pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw
+   - This is Mapbox's public demo token
+   - It should work but has rate limits
+
+   To get your own token:
+   1. Go to https://account.mapbox.com/
+   2. Sign up for free account
+   3. Copy your access token
+   4. Add to .env file:
+      VITE_MAPBOX_TOKEN=your_token_here
+   5. Restart dev server
+
+5. TEST MAP LOADING
+   ----------------
+   After restart, you should see in console:
+   - "Map loaded successfully" (when working)
+   - OR error message (if something wrong)
+
+6. MAP FEATURES AVAILABLE
+   ----------------------
+   ✓ Satellite view (default, Google Maps style)
+   ✓ Streets view
+   ✓ Outdoors view
+   ✓ Light theme
+   ✓ Dark theme
+   ✓ Navigation controls
+   ✓ GPS location tracking
+   ✓ Fullscreen mode
+   ✓ Disaster markers
+   ✓ Resource markers
+   ✓ Team markers
+
+7. QUICK FIX CHECKLIST
+   -------------------
+   [ ] Dev server restarted
+   [ ] Browser cache cleared (Ctrl+Shift+R)
+   [ ] Console checked for errors
+   [ ] .env file has VITE_MAPBOX_TOKEN
+   [ ] Using latest Chrome/Firefox/Edge
+   [ ] Hardware acceleration enabled
+   [ ] Internet connection working
+
+8. ALTERNATIVE: USE DIFFERENT MAP PROVIDER
+   ---------------------------------------
+   If Mapbox still doesn't work, you can switch to:
+   - Leaflet (open source, no token needed)
+   - Google Maps (requires Google API key)
+   - OpenStreetMap (free, no token)
+
+   Let me know if you want to switch to one of these.
+
+================================================================================
