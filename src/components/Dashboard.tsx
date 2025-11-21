@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { AlertTriangle, Activity, Users, Box, Bell, Map as MapIcon, BarChart, Plus, Bot } from 'lucide-react';
+import { AlertTriangle, Activity, Users, Box, Bell, Map as MapIcon, BarChart, Plus, Bot, Brain } from 'lucide-react';
 import { useDisasterStore } from '../store/disaster';
 import LeafletMap from './LeafletMap';
 import Analytics from './Analytics';
@@ -9,6 +9,8 @@ import AlertModal from './AlertModal';
 import AIChat from './AIChat';
 import { Globe } from './Globe';
 import Dock from './Dock';
+import MLResourcePredictor from './MLResourcePredictor';
+import DisasterDetection from './DisasterDetection';
 import { format } from 'date-fns';
 
 const StatCard = ({ icon: Icon, label, value, color }: { 
@@ -92,6 +94,10 @@ export default function Dashboard() {
         );
       case 'analytics':
         return <Analytics />;
+      case 'ml':
+        return <MLResourcePredictor />;
+      case 'detection':
+        return <DisasterDetection />;
       default:
         return <LeafletMap onDisasterSelect={setSelectedDisaster} />;
     }

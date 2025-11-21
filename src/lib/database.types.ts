@@ -108,6 +108,64 @@ export interface Database {
         Insert: Omit<Database['public']['Tables']['alerts']['Row'], 'id' | 'created_at'>
         Update: Partial<Database['public']['Tables']['alerts']['Row']>
       }
+      satellite_detections: {
+        Row: {
+          id: string
+          disaster_type: string
+          confidence: number
+          affected_area: number
+          severity: number
+          latitude: number
+          longitude: number
+          vegetation_index: number | null
+          water_detection: number | null
+          building_damage: number | null
+          fire_intensity: number | null
+          image_url: string | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: Omit<Database['public']['Tables']['satellite_detections']['Row'], 'id' | 'created_at' | 'updated_at'>
+        Update: Partial<Database['public']['Tables']['satellite_detections']['Row']>
+      }
+      social_media_alerts: {
+        Row: {
+          id: string
+          disaster_type: string
+          location_name: string
+          latitude: number
+          longitude: number
+          confidence: number
+          severity: number
+          affected_population: number | null
+          report_count: number
+          sentiment_score: number | null
+          urgency_level: 'critical' | 'high' | 'medium' | 'low'
+          keywords: string[]
+          verified: boolean
+          created_at: string
+          updated_at: string
+        }
+        Insert: Omit<Database['public']['Tables']['social_media_alerts']['Row'], 'id' | 'created_at' | 'updated_at'>
+        Update: Partial<Database['public']['Tables']['social_media_alerts']['Row']>
+      }
+      social_media_sources: {
+        Row: {
+          id: string
+          alert_id: string
+          post_id: string
+          platform: 'twitter' | 'facebook' | 'instagram' | 'reddit'
+          author: string
+          content: string
+          location_name: string | null
+          latitude: number | null
+          longitude: number | null
+          posted_at: string
+          created_at: string
+        }
+        Insert: Omit<Database['public']['Tables']['social_media_sources']['Row'], 'id' | 'created_at'>
+        Update: Partial<Database['public']['Tables']['social_media_sources']['Row']>
+      }
     }
   }
 }

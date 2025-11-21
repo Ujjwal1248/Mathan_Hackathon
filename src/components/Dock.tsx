@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Map, Globe2, BarChart2, Users, Box, AlertTriangle, MessageSquare, Bot } from 'lucide-react';
+import { Map, Globe2, BarChart2, Users, Box, AlertTriangle, MessageSquare, Bot, Brain, Eye } from 'lucide-react';
 import AIChat from './AIChat';
 
 interface DockProps {
@@ -77,6 +77,8 @@ export default function Dock({ activeView, onViewChange }: DockProps) {
     { id: 'map', icon: Map, label: 'Map View' },
     { id: 'globe', icon: Globe2, label: 'Globe' },
     { id: 'analytics', icon: BarChart2, label: 'Analytics' },
+    { id: 'ml', icon: Brain, label: 'ML Predictor' },
+    { id: 'detection', icon: Eye, label: 'AI Detection' },
     { id: 'teams', icon: Users, label: 'Teams' },
     { id: 'resources', icon: Box, label: 'Resources' },
     { id: 'incidents', icon: AlertTriangle, label: 'Incidents' },
